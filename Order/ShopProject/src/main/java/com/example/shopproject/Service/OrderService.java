@@ -21,7 +21,7 @@ public class OrderService {
     MongoOperations mongoOps = new MongoTemplate(new SimpleMongoClientDatabaseFactory(MongoClients.create(),
             "pos_orders"));
 
-    public void PostOrder(PostOrderDTO postOrderDTO, Integer idUser) {
+    public void PostOrder(PostOrderDTO postOrderDTO, Long idUser) {
         Order order = OrderMapper.convertToOrder(postOrderDTO);
         for (Item item :
                 order.getItems()
@@ -48,9 +48,11 @@ public class OrderService {
             list.remove(item);
             order.setItems(list);
         }
-        //mongoOps.insert(order,"Client."+idUser);
+        mongoOps.insert(order,"Client."+idUser);
     }
-
+    public List<Order> GetOrders(Long idUser){
+        return mongoOps.findAll(Order.class, "Client."+idUser);
+    }
     public void DeleteAllOrders(Integer idUser){
         mongoOps.dropCollection("Client."+idUser);
     }

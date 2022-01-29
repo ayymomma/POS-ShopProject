@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="BookAuthor" target="1.5" />
+      <module name="Order" target="1.5" />
+      <module name="ShopProject" target="1.5" />
+      <module name="ShopProject (2)" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
